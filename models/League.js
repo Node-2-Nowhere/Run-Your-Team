@@ -5,7 +5,7 @@ const sequelize = require("../config/connection");
 class League extends Model {}
 
 League.init({
-  id: {
+  league_id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     allowNull: false,
