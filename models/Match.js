@@ -9,13 +9,18 @@ class Game extends Model {}
 
 Game.init(
   {
-    id: {
+    match_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
-    team_id: {
+    home_team_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: { model: "team", key: "id" },
+    },
+    away_team_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: { model: "team", key: "id" },
@@ -23,12 +28,6 @@ Game.init(
     win: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: { model: "game_results", key: "home_win", unique: "false" },
-    },
-    game_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: { model: "game_results", key: "id" },
     },
   },
   {
@@ -37,4 +36,4 @@ Game.init(
   }
 );
 
-module.exports = Game;
+module.exports = Match;

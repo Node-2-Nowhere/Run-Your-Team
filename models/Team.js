@@ -1,23 +1,16 @@
-//team_id
-//team name
-// wins
-// losses
+
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Team extends Mdoel {}
+class Team extends Model {}
 
 
 Team.init( {
-    id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        allowNull: false,
-        autoIncrement: true,
-    },
+
     team_name: {
         type: DataTypes.STRING,
         allowNull: false, 
+        primaryKey: true,
         unique: true, 
     },
     game_win: {

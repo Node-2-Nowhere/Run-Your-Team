@@ -1,10 +1,10 @@
 const router = require("express").Router();
-const { Team, Away_team, Home_team } = require("../../models");
+const { Team, Match } = require("../../models");
 
 router.get("/:id", async (req, res) => {
     try {
       const teamData = await Team.findByPk(req.params.id, {
-        include: [{ model: Away_team }, {model: Home_team}],
+        include: [{ model: Match }],
       });
       if (!teamData) {
         res.status(404).json({ message: "Team found with that id" });

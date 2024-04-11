@@ -5,7 +5,7 @@ class Results extends Model {}
 
 Results.init(
   {
-    id: {
+    match_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
@@ -14,12 +14,10 @@ Results.init(
     home_win: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      reference: {},
     },
     away_win: {
       types: DataTypes.INTEGER,
       allowNull: false,
-      reference: {},
     },
   },
   {

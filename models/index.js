@@ -1,5 +1,5 @@
-const Game = require("./Game");
+const Match = require("./Match");
 const League = require("./League");
 const Team = require("./Team");
 
-module.exports = { Game, League, Team };
+module.exports = { Match, League, Team };

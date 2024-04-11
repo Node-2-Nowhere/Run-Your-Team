@@ -1,6 +1,4 @@
-//league_id primary key
-//team_id foreign key
-//
+
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
