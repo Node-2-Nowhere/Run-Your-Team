@@ -1,10 +1,10 @@
 const router = require("express").Router();
-const { Team, League } = require("../../models");
+const { Teams, League } = require("../../models");
 
 router.get("/", async (req, res) => {
     try {
       const leagueData = await League.findAll({
-        include: [{ model: Team }],
+        include: [{ model: Teams }],
       });
       res.status(200).json(leagueData);
     } catch (err) {
