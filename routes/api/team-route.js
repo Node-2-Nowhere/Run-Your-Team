@@ -1,13 +1,13 @@
 const router = require("express").Router();
 const { Team, Match } = require("../../models");
 
-router.get("/:id", async (req, res) => {
+router.get("/:team_name", async (req, res) => {
     try {
-      const teamData = await Team.findByPk(req.params.id, {
+      const teamData = await Team.findByPk(req.params.team_name, {
         include: [{ model: Match }],
       });
       if (!teamData) {
-        res.status(404).json({ message: "Team found with that id" });
+        res.status(404).json({ message: "Team found with that team name" });
         return;
       }
       res.status(200).json(teamData);
@@ -25,15 +25,15 @@ router.get("/:id", async (req, res) => {
     }
   });
   
-  router.put("/:id", async (req, res) => {
+  router.put("/:team_name", async (req, res) => {
     try {
       const teamData = await Category.update(req.body, {
         where: {
-          id: req.params.id,
+          id: req.params.team_name,
         },
       });
       if (!teamData[0]) {
-        res.status(404).json({ message: "No Team with this id!" });
+        res.status(404).json({ message: "No Team with this team name!" });
         return;
       }
       res.status(200).json(teamData);
@@ -42,7 +42,7 @@ router.get("/:id", async (req, res) => {
     }
   });
 
-  router.delete("/:id", async (req, res) => {
+  router.delete("/:team_name", async (req, res) => {
   try {
     const teamData = await Category.destroy({
       where: {
@@ -50,7 +50,7 @@ router.get("/:id", async (req, res) => {
       },
     });
     if (!teamData) {
-      res.status(404).json({ message: "No team with this id!" });
+      res.status(404).json({ message: "No team with this name!" });
       return;
     }
     res.status(200).json(teamData);

@@ -1,13 +1,9 @@
-//game_id primary key
-//team _id
-// score
-// w/l
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Game extends Model {}
+class Match extends Model {}
 
-Game.init(
+Match.init(
   {
     match_id: {
       type: DataTypes.INTEGER,

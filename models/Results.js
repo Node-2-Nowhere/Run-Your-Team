@@ -12,11 +12,11 @@ Results.init(
       autoIncrement: true,
     },
     home_win: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.BOOLEAN,
       allowNull: false,
     },
     away_win: {
-      types: DataTypes.INTEGER,
+      types: DataTypes.BOOLEAN,
       allowNull: false,
     },
   },
