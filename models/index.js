@@ -23,4 +23,8 @@ Results.belongsTo(Match, {
   foreignKey: "match_id",
 });
 
-module.exports = { Match, League, Team, Results};
+Match.belongsTo(Results, {
+  foreignKey: "match_id",
+});
+
+module.exports = { Match, League, Team, Results };

@@ -19,10 +19,15 @@ Results.init(
       types: DataTypes.BOOLEAN,
       allowNull: false,
     },
+    game_played: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
   },
   {
     sequelize,
     modelName: "results",
+    underscored: true,
   }
 );
 
