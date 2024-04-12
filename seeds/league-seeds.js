@@ -1,6 +1,10 @@
 const { League } = require("../models");
 
-const leagueData = [];
+const leagueData = [
+  {
+    league_name: League1,
+  },
+];
 
 const seedLeague = () => League.bulkCreate(leagueData);
 
