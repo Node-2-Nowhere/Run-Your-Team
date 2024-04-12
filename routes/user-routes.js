@@ -9,11 +9,12 @@ router.post("/", async (req, res) => {
       password: req.body.password,
     });
 
-    req.session.save(() => {
-      req.session.loggedIn = true;
-
-      res.status(200).json(dbUserData);
-    });
+    // req.session.save(() => {
+    //   req.session.loggedIn = true;
+    //   req.session.email = dbUserData.email;
+    //   res.status(200).json(dbUserData);
+    // });
+    res.status(200).json(dbUserData); //skipping session for testing
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
