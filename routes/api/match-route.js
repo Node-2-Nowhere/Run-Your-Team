@@ -3,7 +3,7 @@ const { Match, Team, League } = require("../../models");
 
 router.get("/", async (req, res) => {
   try {
-    const gameData = await League.findAll();
+    const gameData = await Match.findAll();
     res.status(200).json(gameData);
   } catch (err) {
     res.status(500).json(err);
@@ -12,7 +12,7 @@ router.get("/", async (req, res) => {
 
 router.get("/:match_id", async (req, res) => {
   try {
-    const gameData = await Team.findByPk(req.params.match_id);
+    const gameData = await Match.findByPk(req.params.match_id);
     if (!gameData) {
       res.status(404).json({ message: "Matcj found with that id" });
       return;
@@ -23,4 +23,4 @@ router.get("/:match_id", async (req, res) => {
   }
 });
 
-model.export = router;
+module.exports = router;

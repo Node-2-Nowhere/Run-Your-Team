@@ -11,7 +11,6 @@ Team.init(
       unique: true,
       autoIncrement: true,
     },
-
     team_name: {
       type: DataTypes.STRING,
       allowNull: false,
