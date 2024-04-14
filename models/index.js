@@ -1,7 +1,7 @@
 const Match = require("./Match");
 const League = require("./League");
 const Team = require("./Team");
-const Results = require("./Results");
+const Results = require("./Result");
 
 Team.belongsTo(League, {
   foreignKey: "league_id",

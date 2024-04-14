@@ -28,7 +28,7 @@ Match.init(
   },
   {
     sequelize,
-    modelName: "match",
+    modelName: "matches",
     freezeTableName: true,
     underscored: true,
   }
