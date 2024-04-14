@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Results extends Model {}
+class Result extends Model {}
 
-Results.init(
+Result.init(
   {
     match_id: {
       type: DataTypes.INTEGER,
@@ -31,4 +31,4 @@ Results.init(
   }
 );
 
-module.exports = Results;
+module.exports = Result;

@@ -32,7 +32,7 @@ Team.init(
   },
   {
     sequelize,
-    modelName: "team",
+    modelName: "teams",
     freezeTableName: true,
     underscored: true,
   }
