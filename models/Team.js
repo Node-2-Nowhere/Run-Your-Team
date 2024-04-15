@@ -20,15 +20,15 @@ Team.init(
       allowNull: false,
       references: { model: "league", key: "id" },
     },
-    win_count: {
-      type: DataTypes.INTEGER,
-      allowNull: true, // need to figure out how to aggregate win count still... might need a through table
-    },
-    games_played: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      references: { model: "results", key: "game_played" }, //Maybe? need a count function
-    },
+    // win_count: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: true, // need to figure out how to aggregate win count still... might need a through table
+    // },
+    // games_played: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: true,
+    //   references: { model: "results", key: "game_played" }, //Maybe? need a count function
+    // },
   },
   {
     sequelize,
