@@ -14,7 +14,7 @@ router.get("/:match_id", async (req, res) => {
   try {
     const gameData = await Match.findByPk(req.params.match_id);
     if (!gameData) {
-      res.status(404).json({ message: "Matcj found with that id" });
+      res.status(404).json({ message: "Match found with that id" });
       return;
     }
     res.status(200).json(gameData);
