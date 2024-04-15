@@ -11,13 +11,13 @@ Team.belongsTo(League, {
   foreignKey: "league_id",
 });
 
-Team.hasMany(Match, {
-  foreignKey: "match_id",
-});
+// Team.hasMany(Match, {
+//   foreignKey: "team_id",
+// });
 
-Match.hasMany(Team, {
-  foreignKey: "team_id",
-});
+// Match.hasMany(Team, {
+//   foreignKey: "team_id",
+// });
 
 // Result.belongsTo(Match, {
 //   foreignKey: "match_id",
@@ -28,11 +28,11 @@ Match.hasMany(Team, {
 // });
 
 Team.belongsToMany(Match, {
-  through: { Result,},
+  through: "result",
 });
 
 Match.belongsToMany(Team, {
-  through: { Result,},
+  through: "result",
 });
 
 module.exports = { Match, League, Team, Result };

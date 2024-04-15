@@ -13,7 +13,7 @@ const seedAll = async () => {
 
   await seedMatch();
 
-  await seedResults();
+  // await seedResults();
 
   process.exit(0);
 };

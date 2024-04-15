@@ -5,7 +5,7 @@ class Match extends Model {}
 
 Match.init(
   {
-    match_id: {
+    id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
@@ -18,12 +18,12 @@ Match.init(
     home_team_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: { model: "teams", key: "team_id" },
+      references: { model: "teams", key: "id" },
     },
     away_team_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: { model: "teams", key: "team_id" },
+      references: { model: "teams", key: "id" },
     },
     winner: {
       type: DataTypes.INTEGER,

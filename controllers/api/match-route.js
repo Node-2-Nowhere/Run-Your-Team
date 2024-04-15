@@ -23,4 +23,24 @@ router.get("/:match_id", async (req, res) => {
   }
 });
 
+router.post("/", (req, res) => {
+  Match.create(req.body)
+    .then((match) => {
+      if (req.body.teamid.length) {
+        const matchTeamIdArr = req.body.teamid.map((team_id) => {
+          return {
+            match_id: match.id,
+            team_id,
+          };
+        });
+        return Result.bulkCreate(matchTeamIdArr);
+      }
+      res.status(200).json(match);
+    })
+    .then((matchIds) => res.status(200).json(matchIds))
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+});
+
 module.exports = router;

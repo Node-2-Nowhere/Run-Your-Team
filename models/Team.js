@@ -5,7 +5,7 @@ class Team extends Model {}
 
 Team.init(
   {
-    team_id: {
+    id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       unique: true,
@@ -20,6 +20,11 @@ Team.init(
       allowNull: false,
       references: { model: "leagues", key: "id" },
     },
+    // match_id: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false,
+    //   references: { model: "match", key: "match_id" },
+    // },
     // win_count: {
     //   type: DataTypes.INTEGER,
     //   allowNull: true, // need to figure out how to aggregate win count still... might need a through table
