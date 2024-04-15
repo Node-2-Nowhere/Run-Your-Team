@@ -2,14 +2,34 @@ const { Result } = require("../models");
 
 const resultsData = [
   {
-    home_win: 1,
-    away_win: 0,
+    win: 1,
+    team_id: 1,
     match_id: 1,
   },
   {
-    home_win: 0,
-    away_win: 1,
+    win: 1,
+    team_id: 2,
     match_id: 2,
+  },
+  {
+    win: 1,
+    team_id: 2,
+    match_id: 3,
+  },
+  {
+    win: 1,
+    team_id: 2,
+    match_id: 4,
+  },
+  {
+    win: 1,
+    team_id: 2,
+    match_id: 5,
+  },
+  {
+    win: 1,
+    team_id: 1,
+    match_id: 6,
   },
 ];
 console.log("------------------")
