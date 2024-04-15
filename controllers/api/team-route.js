@@ -33,13 +33,24 @@ router.get("/:team_id", async (req, res) => {
       //     ],
       //   ],
       // },
-
     });
 
-  //const gameWins = teamData how many times in teamdata.team_match how many time does match.winner = teamData.id
+    //const gameWins = teamData how many times in teamdata.team_match how many time does match.winner = teamData.id
+
+    // Need to cycle through array for matching values
+    // let gameWins = 0;
+
+    // teamData.forEach((match) => {
+    //   if (match.winner === teamData.id) {
+    //     // Addup how many times values matched
+    //     gameWins++;
+    //   }
+    // console.log(gameWins);
+    // Return as total wins
+    // });
 
     if (!teamData) {
-      res.status(404).json({ message: "Team found with that team name" });
+      res.status(404).json({ message: "Team found with that team id" });
       return;
     }
     res.status(200).json(teamData);
