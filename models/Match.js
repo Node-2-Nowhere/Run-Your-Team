@@ -18,18 +18,17 @@ Match.init(
     home_team_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: { model: "team", key: "team_id" },
+      references: { model: "teams", key: "team_id" },
     },
     away_team_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: { model: "team", key: "team_id" },
+      references: { model: "teams", key: "team_id" },
     },
   },
   {
     sequelize,
-    modelName: "matches",
-    freezeTableName: true,
+    modelName: "match",
     underscored: true,
   }
 );

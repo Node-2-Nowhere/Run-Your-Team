@@ -1,13 +1,13 @@
 const Match = require("./Match");
 const League = require("./League");
 const Team = require("./Team");
-const Results = require("./Result");
+const Result = require("./Result");
 
-Team.belongsTo(League, {
+League.hasMany(Team, {
   foreignKey: "league_id",
 });
 
-League.hasMany(Team, {
+Team.belongsTo(League, {
   foreignKey: "league_id",
 });
 
@@ -19,10 +19,10 @@ Match.belongsTo(Team, {
   foreignKey: "team_id",
 });
 
-Results.belongsTo(Match, {
+Result.belongsTo(Match, {
   foreignKey: "match_id",
 });
 
-module.exports = { Match, League, Team, Results};
+module.exports = { Match, League, Team, Result };
 
 //test testgut
