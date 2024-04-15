@@ -19,10 +19,6 @@ Result.init(
       types: DataTypes.BOOLEAN,
       allowNull: false,
     },
-    game_played: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-    },
   },
   {
     sequelize,

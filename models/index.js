@@ -16,7 +16,7 @@ Team.hasMany(Match, {
 });
 
 Match.belongsTo(Team, {
-  foreignKey: "team_name",
+  foreignKey: "team_id",
 });
 
 Results.belongsTo(Match, {

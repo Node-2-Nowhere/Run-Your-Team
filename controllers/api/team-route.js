@@ -1,20 +1,40 @@
 const router = require("express").Router();
-const { Team, Match } = require("../../models");
+const sequelize = require("sequelize");
+const { Team, Match, Results } = require("../../models");
 
-router.get("/", async (req, res) => {
-  try {
-    const teamData = await Team.findAll();
-    res.status(200).json(teamData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+// router.get("/", async (req, res) => {
+//   try {
+//     const teamData = await Team.findAll();
+//     res.status(200).json(teamData);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+//I  done think we need this route
 
 router.get("/:team_name", async (req, res) => {
   try {
     const teamData = await Team.findByPk(req.params.team_name, {
-      include: [{ model: Match }],
+      include: [{ model: Results }, {model, Match}],
+      attributes: {
+        include: [
+          [
+            // Use plain SQL to add up the total mileage
+            sequelize.literal(
+              "(SELECT SUM(home_win), SUM(away_win) FROM results WHERE result = result.match_id)"
+            ),
+            "gameWins",
+          ],
+          [
+            sequelize.literal(
+              "(SELECT COUNT(match_id) FROM results WHERE result = result.match_id"
+            ),
+            "gamesPlayed",
+          ],
+        ],
+      },
     });
+
     if (!teamData) {
       res.status(404).json({ message: "Team found with that team name" });
       return;
