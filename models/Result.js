@@ -5,24 +5,31 @@ class Result extends Model {}
 
 Result.init(
   {
-    match_id: {
+    result_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
     home_win: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.SMALLINT,
       allowNull: false,
     },
     away_win: {
-      types: DataTypes.BOOLEAN,
+      type: DataTypes.SMALLINT,
       allowNull: false,
+    },
+    match_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "matches",
+        key: "match_id",
+      },
     },
   },
   {
     sequelize,
-    modelName: "results",
+    modelName: "result",
     underscored: true,
   }
 );
