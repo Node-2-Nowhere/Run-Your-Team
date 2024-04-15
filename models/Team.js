@@ -27,7 +27,7 @@ Team.init(
     games_played: {
       type: DataTypes.INTEGER,
       allowNull: true,
-      refrences: { model: "results", key: "game_played" }, //Maybe? need a count function
+      references: { model: "results", key: "game_played" }, //Maybe? need a count function
     },
   },
   {
