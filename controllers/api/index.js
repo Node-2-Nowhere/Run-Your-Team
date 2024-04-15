@@ -6,7 +6,7 @@ const resultsRoutes = require("./results-route");
 
 router.use("/league", leagueRoutes);
 router.use("/team", teamRoutes);
-router.use("/game", matchRoutes);
+router.use("/game", gameRoutes);
 router.use("/result", resultsRoutes);
 
 module.exports = router;

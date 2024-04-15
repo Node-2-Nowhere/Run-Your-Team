@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const sequelize = require("sequelize");
-const { Team, Match, Results } = require("../../models");
+const { Team, Match } = require("../../models");
 
 // router.get("/", async (req, res) => {
 //   try {
@@ -12,28 +12,31 @@ const { Team, Match, Results } = require("../../models");
 // });
 //I  done think we need this route
 
-router.get("/:team_name", async (req, res) => {
+router.get("/:team_id", async (req, res) => {
   try {
-    const teamData = await Team.findByPk(req.params.team_name, {
-      include: [{ model: Results }, { model, Match }],
-      attributes: {
-        include: [
-          [
-            // Use plain SQL to add up the total mileage
-            sequelize.literal(
-              "(SELECT SUM(home_win), SUM(away_win) FROM results WHERE result = results.match_id)"
-            ),
-            "gameWins",
-          ],
-          [
-            sequelize.literal(
-              "(SELECT COUNT(match_id) FROM results WHERE results = results.match_id"
-            ),
-            "gamesPlayed",
-          ],
-        ],
-      },
+    const teamData = await Team.findByPk(req.params.team_id, {
+      include: [{ model: Match }],
+      // attributes: {
+      //   include: [
+      //     [
+      //       // Use plain SQL to add up the total mileage
+      //       sequelize.literal(
+      //         "(SELECT SUM(win), FROM result WHERE result.team_id = result.team_id)"
+      //       ),
+      //       "gameWins",
+      //     ],
+      //     [
+      //       sequelize.literal(
+      //         "(SELECT COUNT(match_id) FROM result WHERE match.match_id = match.match_id"
+      //       ),
+      //       "gamesPlayed",
+      //     ],
+      //   ],
+      // },
+
     });
+
+  //const gameWins = teamData how many times in teamdata.team_match how many time does match.winner = teamData.id
 
     if (!teamData) {
       res.status(404).json({ message: "Team found with that team name" });
