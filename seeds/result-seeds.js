@@ -1,18 +1,19 @@
-const { Results } = require("../models");
+const { Result } = require("../models");
 
 const resultsData = [
-    {   
-        home_win: true, 
-        away_win: false, 
-        game_played: true,
-    },
-    {
-        home_win:  false, 
-        away_win: true, 
-        game_played: true, 
-    },
+  {
+    home_win: 1,
+    away_win: 0,
+    match_id: 1,
+  },
+  {
+    home_win: 0,
+    away_win: 1,
+    match_id: 2,
+  },
 ];
-
-const seedResults = () => Results.bulkCreate(resultsData);
+console.log("------------------")
+console.log(Result);
+const seedResults = () => Result.bulkCreate(resultsData);
 
 module.exports = seedResults;

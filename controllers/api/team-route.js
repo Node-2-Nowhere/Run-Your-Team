@@ -15,19 +15,19 @@ const { Team, Match, Results } = require("../../models");
 router.get("/:team_name", async (req, res) => {
   try {
     const teamData = await Team.findByPk(req.params.team_name, {
-      include: [{ model: Results }, {model, Match}],
+      include: [{ model: Results }, { model, Match }],
       attributes: {
         include: [
           [
             // Use plain SQL to add up the total mileage
             sequelize.literal(
-              "(SELECT SUM(home_win), SUM(away_win) FROM results WHERE result = result.match_id)"
+              "(SELECT SUM(home_win), SUM(away_win) FROM results WHERE result = results.match_id)"
             ),
             "gameWins",
           ],
           [
             sequelize.literal(
-              "(SELECT COUNT(match_id) FROM results WHERE result = result.match_id"
+              "(SELECT COUNT(match_id) FROM results WHERE results = results.match_id"
             ),
             "gamesPlayed",
           ],

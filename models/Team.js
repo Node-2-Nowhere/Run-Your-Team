@@ -18,7 +18,7 @@ Team.init(
     league_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: { model: "league", key: "id" },
+      references: { model: "leagues", key: "id" },
     },
     // win_count: {
     //   type: DataTypes.INTEGER,
@@ -32,8 +32,7 @@ Team.init(
   },
   {
     sequelize,
-    modelName: "teams",
-    freezeTableName: true,
+    modelName: "team",
     underscored: true,
   }
 );
