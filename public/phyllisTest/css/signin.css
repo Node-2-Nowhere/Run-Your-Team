@@ -1,0 +1,75 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  background: navy;
+}
+
+.jumbotron {
+  margin-top: 8rem;
+  margin-bottom: 0;
+  background: url("../images/MuddyDash.jpg") no-repeat;
+  background-size: cover;
+  border: 2px solid red;
+  border-radius: 8px;
+}
+
+.form-floating {
+  margin-top: 0.25rem;
+  /* box-sizing: border-box; */
+  border-radius: 8px;
+  border: 2px solid red;
+}
+/* .wrapper {
+  display: flex;
+  justify-content: center;
+} */
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin-bottom: 5rem;
+}
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border: 2px solid red;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border: 2px solid red;
+}
+
+button {
+  /* box-sizing: border-box; */
+  border: 2px solid white;
+  border-radius: 8px;
+}
+
+footer {
+  margin-bottom: 3rem;
+}
+
+@media screen and (max-width: 768px) {
+  .jumbotron {
+    background: url("../images/MuddyDash768.jpg") no-repeat;
+    /* background-size: 100% 100%; */
+    background-size: cover;
+  }
+}
