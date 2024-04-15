@@ -7,11 +7,11 @@ const seedResults = require("./result-seeds");
 const seedAll = async () => {
   await sequelize.sync({ force: true });
 
-  await seedMatch();
-
   await seedLeague();
 
   await seedTeam();
+
+  await seedMatch();
 
   await seedResults();
 
