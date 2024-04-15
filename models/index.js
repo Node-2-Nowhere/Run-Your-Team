@@ -24,3 +24,5 @@ Results.belongsTo(Match, {
 });
 
 module.exports = { Match, League, Team, Results};
+
+//test testgut
