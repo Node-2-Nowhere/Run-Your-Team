@@ -15,12 +15,24 @@ Team.hasMany(Match, {
   foreignKey: "match_id",
 });
 
-Match.belongsTo(Team, {
+Match.hasMany(Team, {
   foreignKey: "team_id",
 });
 
-Result.belongsTo(Match, {
-  foreignKey: "match_id",
+// Result.belongsTo(Match, {
+//   foreignKey: "match_id",
+// });
+
+// Result.belongsTo(Team, {
+//   foreignKey: "team_id",
+// });
+
+Team.belongsToMany(Match, {
+  through: { Result,},
+});
+
+Match.belongsToMany(Team, {
+  through: { Result,},
 });
 
 module.exports = { Match, League, Team, Result };

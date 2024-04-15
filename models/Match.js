@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require("sequelize");
+const { Model, DataTypes, DATE } = require("sequelize");
 const sequelize = require("../config/connection");
 
 class Match extends Model {}
@@ -25,6 +25,10 @@ Match.init(
       allowNull: false,
       references: { model: "teams", key: "team_id" },
     },
+    winner: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    }
   },
   {
     sequelize,
