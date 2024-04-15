@@ -11,24 +11,26 @@ Match.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    match_date: {
+      type: DataTypes.DATE, // Need to set up date format
+      allowNull: false,
+    },
     home_team_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: { model: "team", key: "id" },
+      references: { model: "team", key: "team_id" },
     },
     away_team_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: { model: "team", key: "id" },
-    },
-    win: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
+      references: { model: "team", key: "team_id" },
     },
   },
   {
     sequelize,
-    modelName: "game",
+    modelName: "matches",
+    freezeTableName: true,
+    underscored: true,
   }
 );
 

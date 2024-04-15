@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Results extends Model {}
+class Result extends Model {}
 
-Results.init(
+Result.init(
   {
     match_id: {
       type: DataTypes.INTEGER,
@@ -19,11 +19,16 @@ Results.init(
       types: DataTypes.BOOLEAN,
       allowNull: false,
     },
+    game_played: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
   },
   {
     sequelize,
     modelName: "results",
+    underscored: true,
   }
 );
 
-module.exports = Results;
+module.exports = Result;
