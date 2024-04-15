@@ -2,39 +2,12 @@ const router = require("express").Router();
 const sequelize = require("sequelize");
 const { Team, Match } = require("../../models");
 
-// router.get("/", async (req, res) => {
-//   try {
-//     const teamData = await Team.findAll();
-//     res.status(200).json(teamData);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-//I  done think we need this route
 
 router.get("/:team_id", async (req, res) => {
   try {
     const teamData = await Team.findByPk(req.params.team_id, {
       include: [{ model: Match }],
-      // attributes: {
-      //   include: [
-      //     [
-      //       // Use plain SQL to add up the total mileage
-      //       sequelize.literal(
-      //         "(SELECT SUM(win), FROM result WHERE result.team_id = result.team_id)"
-      //       ),
-      //       "gameWins",
-      //     ],
-      //     [
-      //       sequelize.literal(
-      //         "(SELECT COUNT(match_id) FROM result WHERE match.match_id = match.match_id"
-      //       ),
-      //       "gamesPlayed",
-      //     ],
-      //   ],
-      // },
     });
-
     //const gameWins = teamData how many times in teamdata.team_match how many time does match.winner = teamData.id
 
     // Need to cycle through array for matching values
