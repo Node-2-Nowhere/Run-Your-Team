@@ -1,33 +1,37 @@
 const router = require("express").Router();
 const sequelize = require("sequelize");
-const { Team, Match } = require("../../models");
-
+const { Team, Match, TeamMatch } = require("../../models");
 
 router.get("/:team_id", async (req, res) => {
   try {
     const teamData = await Team.findByPk(req.params.team_id, {
-      include: [{ model: Match }],
+      include: [{ model: Match, through: TeamMatch }],
+      plain: true,
     });
-    //const gameWins = teamData how many times in teamdata.team_match how many time does match.winner = teamData.id
+    let gameWins = 0;
+    for (const match of teamData.matches) {
+      if (match.winner === teamData.id) {
+        gameWins++;
+      }
+    }
+    console.log(teamData);
 
-    // Need to cycle through array for matching values
-    // let gameWins = 0;
-
-    // teamData.forEach((match) => {
-    //   if (match.winner === teamData.id) {
-    //     // Addup how many times values matched
-    //     gameWins++;
-    //   }
-    // console.log(gameWins);
-    // Return as total wins
-    // });
-
+    const fullTeamData = {
+      id: teamData.id,
+      team_name: teamData.team_name,
+      league_id: teamData.league_id,
+      match_count: teamData.matches.length,
+      gameWins: gameWins,
+    };
+    if (teamData) {
+      res.status(200).json(fullTeamData);
+    }
     if (!teamData) {
-      res.status(404).json({ message: "Team found with that team id" });
+      res.status(404).json({ message: "No Team found with that team id" });
       return;
     }
-    res.status(200).json(teamData);
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
