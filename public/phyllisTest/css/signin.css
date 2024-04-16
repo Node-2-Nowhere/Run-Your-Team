@@ -4,36 +4,27 @@ body {
 }
 
 body {
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
-  background: navy;
-}
-
-.jumbotron {
-  margin-top: 8rem;
-  margin-bottom: 0;
-  background: url("../images/MuddyDash.jpg") no-repeat;
-  background-size: cover;
-  border: 2px solid red;
-  border-radius: 8px;
-}
-
-.form-floating {
-  margin-top: 0.25rem;
-  /* box-sizing: border-box; */
-  border-radius: 8px;
-  border: 2px solid red;
-}
-/* .wrapper {
   display: flex;
-  justify-content: center;
-} */
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #946f6f;
+}
+
+header {
+  background-image: url(../public/phyllisTest/images/jannes-glas-0NaQQsLWLkA-unsplash.jpg);
+  background: darkslateblue;
+}
+
+/* Photo by <a href="https://unsplash.com/@jannesglas?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Jannes Glas</a> on <a href="https://unsplash.com/photos/silhouette-of-people-playing-basketball-during-sunset-0NaQQsLWLkA?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a> */
+
 .form-signin {
+  width: 100%;
   max-width: 330px;
   padding: 15px;
-  margin-bottom: 5rem;
+  margin: auto;
 }
+
 .form-signin .checkbox {
   font-weight: 400;
 }
@@ -46,30 +37,23 @@ body {
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
-  border: 2px solid red;
 }
 
 .form-signin input[type="password"] {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-  border: 2px solid red;
+}
+.wrapper {
+  display: flex;
 }
 
-button {
-  /* box-sizing: border-box; */
-  border: 2px solid white;
-  border-radius: 8px;
+#form1 {
+  float: left;
+  width: 45%;
 }
 
-footer {
-  margin-bottom: 3rem;
-}
-
-@media screen and (max-width: 768px) {
-  .jumbotron {
-    background: url("../images/MuddyDash768.jpg") no-repeat;
-    /* background-size: 100% 100%; */
-    background-size: cover;
-  }
+#form2 {
+  float: right;
+  width: 45%;
 }
