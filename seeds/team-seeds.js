@@ -9,6 +9,14 @@ const teamData = [
     team_name: "Squirrels",
     league_id: 1,
   },
+  {
+    team_name: "Panda",
+    league_id: 1,
+  },
+  {
+    team_name: "Colts",
+    league_id: 1,
+  },
   // {
   //   team_name: "Pigeons",
   //   league_id: 1,

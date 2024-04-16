@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Match, Team, League } = require("../../models");
+const { Match, Team, League, TeamMatch } = require("../../models");
 
 router.get("/", async (req, res) => {
   try {
@@ -23,16 +23,25 @@ router.get("/:match_id", async (req, res) => {
   }
 });
 
-
 router.post("/", async (req, res) => {
   try {
     const matchData = await Match.create(req.body);
+    const association1 = {
+      match_id: matchData.id,
+      team_id: req.body.home_team_id,
+    };
+    
+    console.log(association1);
+    const association2 = {
+      match_id: matchData.id,
+      team_id: req.body.away_team_id,
+    };
+    const homeTeam = await TeamMatch.create(association1);
+    const awayTeam = await TeamMatch.create(association2);
     res.status(200).json(matchData);
   } catch (err) {
     res.status(400).json(err);
   }
 });
-
-
 
 module.exports = router;
