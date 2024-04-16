@@ -4,56 +4,92 @@ body {
 }
 
 body {
-  display: flex;
-  align-items: center;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  background-color: #946f6f;
+  background: navy;
 }
 
-header {
-  background-image: url(../public/phyllisTest/images/jannes-glas-0NaQQsLWLkA-unsplash.jpg);
-  background: darkslateblue;
+.jumbotron {
+  margin-top: 5rem;
+  margin-bottom: 0;
+  background: url("../images/saurav-rastogi-AOKflTRaRjo-unsplash-1400.jpg")
+    no-repeat center center;
+  background-size: cover;
+  border: 2px solid red;
+  border-radius: 8px;
 }
-
-/* Photo by <a href="https://unsplash.com/@jannesglas?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Jannes Glas</a> on <a href="https://unsplash.com/photos/silhouette-of-people-playing-basketball-during-sunset-0NaQQsLWLkA?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a> */
-
+.form-floating {
+  margin-top: 0.25rem;
+  border-radius: 8px;
+  border: 2px solid red;
+}
 .form-signin {
-  width: 100%;
   max-width: 330px;
   padding: 15px;
-  margin: auto;
+  margin-bottom: 3rem;
 }
-
 .form-signin .checkbox {
   font-weight: 400;
 }
-
 .form-signin .form-floating:focus-within {
   z-index: 2;
 }
-
 .form-signin input[type="email"] {
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
+  border: 2px solid red;
 }
-
 .form-signin input[type="password"] {
-  margin-bottom: 10px;
+  margin-bottom: 6px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+  border: 2px solid red;
 }
-.wrapper {
-  display: flex;
+button {
+  border: 2px solid white;
+  border-radius: 8px;
 }
-
-#form1 {
-  float: left;
-  width: 45%;
+footer {
+  margin-bottom: 5rem;
 }
-
-#form2 {
-  float: right;
-  width: 45%;
+@media screen and (max-width: 1400px) {
+  .jumbotron {
+    background: url("../images/saurav-rastogi-AOKflTRaRjo-unsplash-1400.jpg")
+      no-repeat center center;
+    background-size: cover;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .jumbotron {
+    background: url("../images/saurav-rastogi-AOKflTRaRjo-unsplash-1200.jpg")
+      no-repeat center center;
+    background-size: cover;
+  }
+}
+@media screen and (max-width: 992px) {
+  .jumbotron {
+    background: url("../images/saurav-rastogi-AOKflTRaRjo-unsplash-992.jpg")
+      no-repeat center center;
+    background-size: cover;
+  }
+}
+@media screen and (max-width: 768px) {
+  .jumbotron {
+    background: url("../images/saurav-rastogi-AOKflTRaRjo-unsplash-768.jpg")
+      no-repeat center center;
+    background-size: cover;
+  }
+}
+@media sceen and (max-width: 576px) {
+  .jumbotron {
+    background: url("../images/saurav-rastogi-AOKflTRaRjo-unsplash-576.jpg")
+      no-repeat center center;
+    background-size: cover;
+  }
+}
+@media sceen and (min-width: 360px) {
+  .jumbotron {
+    background: url("../images/saurav-rastogi-AOKflTRaRjo-unsplash-360.jpg")
+      no-repeat center center;
+    background-size: cover;
+  }
 }
