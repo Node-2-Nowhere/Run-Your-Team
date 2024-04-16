@@ -1,8 +1,9 @@
 const router = require("express").Router();
 const sequelize = require("sequelize");
 const { Team, Match, TeamMatch } = require("../../models");
+const withAuth = require('../../utils/auth');
 
-router.get("/:team_id", async (req, res) => {
+router.get("/:team_id", withAuth, async (req, res) => {
   try {
     const teamData = await Team.findByPk(req.params.team_id, {
       include: [{ model: Match, through: TeamMatch }],
@@ -36,7 +37,7 @@ router.get("/:team_id", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", withAuth, async (req, res) => {
   try {
     const teamData = await Team.create(req.body);
     res.status(200).json(teamData);
@@ -45,7 +46,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.put("/:team_name", async (req, res) => {
+router.put("/:team_name", withAuth, async (req, res) => {
   try {
     const teamData = await Team.update(req.body, {
       where: {
@@ -62,7 +63,7 @@ router.put("/:team_name", async (req, res) => {
   }
 });
 
-router.delete("/:team_name", async (req, res) => {
+router.delete("/:team_name", withAuth, async (req, res) => {
   try {
     const teamData = await Team.destroy({
       where: {

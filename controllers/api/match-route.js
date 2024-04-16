@@ -1,7 +1,8 @@
 const router = require("express").Router();
 const { Match, Team, League, TeamMatch } = require("../../models");
+const withAuth = require('../../utils/auth');
 
-router.get("/", async (req, res) => {
+router.get("/",  withAuth, async (req, res) => {
   try {
     const gameData = await Match.findAll();
     res.status(200).json(gameData);
@@ -10,7 +11,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/:match_id", async (req, res) => {
+router.get("/:match_id", withAuth, async (req, res) => {
   try {
     const gameData = await Match.findByPk(req.params.match_id);
     if (!gameData) {
@@ -23,7 +24,7 @@ router.get("/:match_id", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", withAuth, async (req, res) => {
   try {
     const matchData = await Match.create(req.body);
     const association1 = {
