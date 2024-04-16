@@ -5,7 +5,7 @@ class Team extends Model {}
 
 Team.init(
   {
-    team_id: {
+    id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       unique: true,
@@ -18,22 +18,12 @@ Team.init(
     league_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: { model: "league", key: "id" },
-    },
-    win_count: {
-      type: DataTypes.INTEGER,
-      allowNull: true, // need to figure out how to aggregate win count still... might need a through table
-    },
-    games_played: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      refrences: { model: "results", key: "game_played" }, //Maybe? need a count function
+      references: { model: "leagues", key: "id" },
     },
   },
   {
     sequelize,
     modelName: "team",
-    freezeTableName: true,
     underscored: true,
   }
 );

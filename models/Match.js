@@ -1,35 +1,38 @@
-const { Model, DataTypes } = require("sequelize");
+const { Model, DataTypes, DATE } = require("sequelize");
 const sequelize = require("../config/connection");
 
 class Match extends Model {}
 
 Match.init(
   {
-    match_id: {
+    id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
     match_date: {
-      type: DataTypes.DATE, // Need to set up date format
+      type: DataTypes.DATE, 
       allowNull: false,
     },
     home_team_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: { model: "team", key: "team_id" },
+      references: { model: "teams", key: "id" },
     },
     away_team_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: { model: "team", key: "team_id" },
+      references: { model: "teams", key: "id" },
     },
+    winner: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    }
   },
   {
     sequelize,
     modelName: "match",
-    freezeTableName: true,
     underscored: true,
   }
 );

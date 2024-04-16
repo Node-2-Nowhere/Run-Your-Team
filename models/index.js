@@ -1,30 +1,24 @@
 const Match = require("./Match");
 const League = require("./League");
 const Team = require("./Team");
-const Results = require("./Results");
-
-Team.belongsTo(League, {
-  foreignKey: "league_id",
-});
+// const Result = require("./Result");
 
 League.hasMany(Team, {
   foreignKey: "league_id",
 });
 
-Team.hasMany(Match, {
-  foreignKey: "match_id",
+Team.belongsTo(League, {
+  foreignKey: "league_id",
 });
 
-Match.belongsTo(Team, {
-  foreignKey: "team_name",
+Team.belongsToMany(Match, {
+  through: "result",
 });
 
-Results.belongsTo(Match, {
-  foreignKey: "match_id",
+Match.belongsToMany(Team, {
+  through: "result",
 });
 
-Match.belongsTo(Results, {
-  foreignKey: "match_id",
-});
+module.exports = { Match, League, Team };
 
-module.exports = { Match, League, Team, Results };
+//test testgut

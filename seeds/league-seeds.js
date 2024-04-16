@@ -2,7 +2,8 @@ const { League } = require("../models");
 
 const leagueData = [
   {
-    league_name: League1,
+    id: 1,
+    league_name: "League1",
   },
 ];
 

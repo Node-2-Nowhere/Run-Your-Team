@@ -19,7 +19,6 @@ League.init(
   {
     sequelize,
     modelName: "league",
-    freezeTableName: true,
     underscored: true,
   }
 );
