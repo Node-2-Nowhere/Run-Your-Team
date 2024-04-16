@@ -31,13 +31,13 @@
       <div class="row"></div>
       <section class="form-create container">
         <div class="wrapper row">
-          <form id="form1" class="col-md-6 col-12">
+          <form class="col-md-6 col-12">
             <h2 class="h4 mt-3 mb-2 text-white fw-bold">Please sign in</h2>
             <div class="form-floating">
               <input
                 type="email"
                 class="form-control"
-                id="floatingInput"
+                id="floatingInput emailSign"
                 placeholder="name@example.com"
               />
               <label for="floatingInput">Email address</label>
@@ -46,13 +46,17 @@
               <input
                 type="password"
                 class="form-control"
-                id="floatingPassword"
+                id="floatingPassword passwordSign"
                 placeholder="Password"
               />
               <label for="floatingPassword">Password</label>
             </div>
             <div class="checkbox mb-2"></div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit">
+            <button
+              id="sigInID"
+              class="w-100 btn btn-lg btn-primary"
+              type="submit"
+            >
               Sign in
             </button>
           </form>
@@ -63,7 +67,7 @@
               <input
                 type="email"
                 class="form-control"
-                id="floatingInput2"
+                id="floatingInput2 emailAcct"
                 placeholder="name@example.com"
               />
               <label for="floatingInput2">Email address</label>
@@ -72,13 +76,17 @@
               <input
                 type="password"
                 class="form-control"
-                id="floatingPassword2"
+                id="floatingPassword2 passwordAcct"
                 placeholder="Password"
               />
               <label for="floatingPassword2">Password</label>
             </div>
             <div class="checkbox mb-2"></div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit">
+            <button
+              id="accountID"
+              class="w-100 btn btn-lg btn-primary"
+              type="submit"
+            >
               Create Account
             </button>
           </form>
