@@ -2,6 +2,17 @@ const router = require("express").Router();
 const sequelize = require("sequelize");
 const { Team, Match, TeamMatch } = require("../../models");
 
+router.get("/", async (req, res) => {
+  try {
+    const teamData = await Team.findAll();
+    res.status(200).json(teamData);
+
+    res.render("teams");
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.get("/:team_id", async (req, res) => {
   try {
     const teamData = await Team.findByPk(req.params.team_id, {

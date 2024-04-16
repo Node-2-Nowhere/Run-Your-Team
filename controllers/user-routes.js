@@ -1,6 +1,21 @@
 const router = require("express").Router();
 const { User } = require("../models");
 
+router.get("/", (req, res) => {
+  try {
+    // if (req.session.logged_in) {
+    //   res.redirect("/dashboard");
+    //   console.log(`Hit the if statement`);
+    //   return;
+    // }
+
+    res.render("signIn");
+    console.log(`Hit the login`);
+  } catch (err) {
+    res.status(500).json({ message: `Hit the error` });
+  }
+});
+
 // CREATE new user
 router.post("/", async (req, res) => {
   try {
@@ -53,6 +68,11 @@ router.post("/login", async (req, res) => {
         .status(200)
         .json({ user: dbUserData, message: "You are now logged in!" });
     });
+
+    if (req.session.logged_in) {
+      res.redirect("/dashboard");
+      return;
+    }
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -65,6 +85,8 @@ router.post("/logout", (req, res) => {
     req.session.destroy(() => {
       res.status(204).end();
     });
+
+    res.render("signIn");
   } else {
     res.status(404).end();
   }
