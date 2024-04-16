@@ -12,7 +12,7 @@ Match.init(
       autoIncrement: true,
     },
     match_date: {
-      type: DataTypes.DATE, // Need to set up date format
+      type: DataTypes.DATE, 
       allowNull: false,
     },
     home_team_id: {
