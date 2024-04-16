@@ -1,11 +1,11 @@
 const loginFormHandler = async (event) => {
   event.preventDefault();
 
-  const email = document.querySelector("#email-login").value.trim();
-  const password = document.querySelector("#password-login").value.trim();
+  const email = document.querySelector("#emailSign").value.trim();
+  const password = document.querySelector("#passwordSign").value.trim();
 
   if (email && password) {
-    const response = await fetch("/users/login", {
+    const response = await fetch("/api/user/login", {
       method: "POST",
       body: JSON.stringify({ email, password }),
       headers: { "Content-Type": "application/json" },
@@ -22,11 +22,11 @@ const loginFormHandler = async (event) => {
 const signupFormHandler = async (event) => {
   event.preventDefault();
 
-  const email = document.querySelector("#email-signup").value.trim();
-  const password = document.querySelector("#password-signup").value.trim();
+  const email = document.querySelector("#emailAcct").value.trim();
+  const password = document.querySelector("#passwordAcct").value.trim();
 
   if (email && password) {
-    const response = await fetch("/users", {
+    const response = await fetch("/api/user", {
       method: "POST",
       body: JSON.stringify({ email, password }),
       headers: { "Content-Type": "application/json" },
@@ -41,9 +41,9 @@ const signupFormHandler = async (event) => {
 };
 
 document
-  .querySelector(".login-form")
-  .addEventListener("submit", loginFormHandler);
+  .querySelector("#signIn")
+  .addEventListener("#signInID", loginFormHandler);
 
 document
-  .querySelector(".signup-form")
-  .addEventListener("submit", signupFormHandler);
+  .querySelector("#createAccount")
+  .addEventListener("accountID", signupFormHandler);

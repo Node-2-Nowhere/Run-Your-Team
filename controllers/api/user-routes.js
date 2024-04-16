@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User } = require("../models");
+const { User } = require("../../models");
 
 router.post("/", async (req, res) => {
   try {
@@ -42,6 +42,11 @@ router.post("/login", async (req, res) => {
 
       res.json({ user: userData, message: "You are now logged in!" });
     });
+
+    if (req.session.logged_in) {
+      res.redirect("/dashboard");
+      return;
+    }
   } catch (err) {
     res.status(400).json(err);
   }
@@ -52,6 +57,8 @@ router.post("/logout", (req, res) => {
     req.session.destroy(() => {
       res.status(204).end();
     });
+
+    res.render("signIn");
   } else {
     res.status(404).end();
   }
