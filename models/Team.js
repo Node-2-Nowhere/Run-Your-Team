@@ -20,6 +20,14 @@ Team.init(
       allowNull: false,
       references: { model: "leagues", key: "id" },
     },
+    games_played: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
+    games_won:{
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
   },
   {
     sequelize,
