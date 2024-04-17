@@ -21,12 +21,12 @@ const newLeagueHandler = async (event) => {
 const newTeamHandler = async (event) => {
   event.preventDefault();
 
-  const teamName = document.querySelector("").value.trim();
-  const league = document.querySelector("").value.trim();
+  const league = document.querySelector(".leagueID").value.trim();
+  const teamName = document.querySelector(".teamName").value.trim();
 
   const response = await fetch(`/api/team`, {
     method: "POST",
-    body: JSON.stringify({ teamName, league }),
+    body: JSON.stringify({ league_id: league, team_name: teamName }),
     headers: {
       "Content-Type": "application/json",
     },
@@ -150,10 +150,12 @@ const getMatchHandler = async (event) => {
   }
 };
 
-document.querySelector("").addEventListener("", newTeamHandler);
-document.querySelector("").addEventListener("", newMatchHandler);
-document.querySelector("").addEventListener("", newLeagueHandler);
-document.querySelector("").addEventListener("", updateMatchHandler);
-document.querySelector("").addEventListener("", updateTeamHandler);
-document.querySelector("").addEventListener("", getMatchHandler);
-document.querySelector("").addEventListener("", getTeamHandler);
+document
+  .querySelector(".newTeamForm")
+  .addEventListener("submit", newTeamHandler);
+// document.querySelector("").addEventListener("", newMatchHandler);
+// document.querySelector("").addEventListener("", newLeagueHandler);
+// document.querySelector("").addEventListener("", updateMatchHandler);
+// document.querySelector("").addEventListener("", updateTeamHandler);
+// document.querySelector("").addEventListener("", getMatchHandler);
+// document.querySelector("").addEventListener("", getTeamHandler);
