@@ -1,38 +1,38 @@
 const router = require("express").Router();
 const sequelize = require("sequelize");
 const { Team, Match, TeamMatch } = require("../../models");
-const { withGuard } = require("../../utils/authGuard");
+const { apiGuard } = require("../../utils/authGuard");
 
-router.get("/", withGuard, async (req, res) => {
-  try {
-    const teamData = await Team.findAll({
-      include: [{ model: Match, through: TeamMatch }],
-    });
-    const teams = teamData.map((team) => team.get({ plain: true }));
-    res.render("dashboard", {
-      teams,
-      logged_in: req.session.logged_in,
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+// router.get("/", async (req, res) => {
+//   try {
+//     const teamData = await Team.findAll({
+//       include: [{ model: Match, through: TeamMatch }],
+//     });
+//     const teams = teamData.map((team) => team.get({ plain: true }));
+//     res.render("dashboard", {
+//       teams,
+//       logged_in: req.session.logged_in,
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
-router.get("/:team_id", withGuard, async (req, res) => {
-  try {
-    const teamData = await Team.findByPk(req.params.team_id, {
-      include: [{ model: Match, through: TeamMatch }],
-    });
+// router.get("/:team_id", async (req, res) => {
+//   try {
+//     const teamData = await Team.findByPk(req.params.team_id, {
+//       include: [{ model: Match, through: TeamMatch }],
+//     });
 
-    const teams = teamData.get({ plain: true });
-    res.render("teams", {
-      teams,
-      logged_in: req.session.logged_in,
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+//     const teams = teamData.get({ plain: true });
+//     res.render("teams", {
+//       teams,
+//       logged_in: req.session.logged_in,
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 // let gameWins = 0;
 // for (const match of teamData.matches) {
@@ -62,7 +62,7 @@ router.get("/:team_id", withGuard, async (req, res) => {
 //   }
 // });
 
-router.post("/", withGuard, async (req, res) => {
+router.post("/", apiGuard, async (req, res) => {
   try {
     const newTeam = await Team.create({
       ...req.body,
