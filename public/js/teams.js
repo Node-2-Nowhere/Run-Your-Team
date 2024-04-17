@@ -1,7 +1,7 @@
 const newLeagueHandler = async (event) => {
   event.preventDefault();
 
-  const leagueName = document.querySelector("").value.trim();
+  const leagueName = document.querySelector("#leagueName").value.trim();
 
   const response = await fetch(`/api/league`, {
     method: "POST",
@@ -150,6 +150,7 @@ const getMatchHandler = async (event) => {
   }
 };
 
+// document.documentElement(".tableElement");
 document.querySelector("").addEventListener("", newTeamHandler);
 document.querySelector("").addEventListener("", newMatchHandler);
 document.querySelector("").addEventListener("", newLeagueHandler);
