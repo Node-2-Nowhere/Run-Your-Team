@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { Match, Team, League, TeamMatch } = require("../../models");
-const { withGuard } = require("../../utils/authGuard");
+const { withGuard, apiGuard } = require("../../utils/authGuard");
 
 // router.get("/",  withAuth, async (req, res) => {
 //   try {
@@ -24,7 +24,7 @@ const { withGuard } = require("../../utils/authGuard");
 //   }
 // });
 
-router.post("/", withGuard, async (req, res) => {
+router.post("/", apiGuard, async (req, res) => {
   try {
     const matchData = await Match.create(req.body);
     const association1 = {

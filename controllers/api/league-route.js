@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { Team, League } = require("../../models");
-const { withGuard, withoutGuard } = require("../../utils/authGuard");
+const { apiGuard } = require("../../utils/authGuard");
 
 // router.get("/", withAuth, async (req, res) => {
 //   try {
@@ -13,7 +13,7 @@ const { withGuard, withoutGuard } = require("../../utils/authGuard");
 //   }
 // });
 
-router.post("/", withGuard, async (req, res) => {
+router.post("/", apiGuard, async (req, res) => {
   try {
     const leagueData = await League.create(req.body);
     res.status(200).json(leagueData);
