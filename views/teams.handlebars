@@ -67,8 +67,9 @@
                   <th scope="col">Games Played</th>
                 </tr>
               </thead>
-              <tbody id="#leagueName">
-                 <p>Test: {{leagueName}}</p>
+              <tbody>
+                <a href="/teams/{{project.id}}">{{project.name}}</a>
+                 <p id="#leagueName">Test: {{leagueName}}</p>
                 {{#each teams}}
                 <tr>
                   
