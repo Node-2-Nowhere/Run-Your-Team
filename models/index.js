@@ -2,6 +2,7 @@ const Match = require("./Match");
 const League = require("./League");
 const Team = require("./Team");
 const TeamMatch = require("./TeamMatch");
+const User = require("./User");
 // const Result = require("./Result");
 
 League.hasMany(Team, {
@@ -22,6 +23,4 @@ Match.belongsToMany(Team, {
   foreignKey: "match_id",
 });
 
-module.exports = { Match, League, Team, TeamMatch };
-
-//test testgut
+module.exports = { Match, League, Team, TeamMatch, User };
