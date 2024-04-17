@@ -39,7 +39,18 @@
         />
       </symbol>
     </svg>
-
+    <header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow"
+    data-bs-theme="dark">
+    <a
+        class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white"
+        href="#"
+        >Node-2-Nowhere</a
+      >
+      <form class="d-flex" role="logout">
+        <!-- <input class="form-control me-2" type="button" placeholder="Signout" aria-label="Signout"> -->
+        <button class="btn btn-outline-light" type="submit">Signout</button>
+      </form>
+    </header>
     <div class="container">
       <main>
         <div class="py-5 text-center">
@@ -124,7 +135,7 @@
               </tbody>
             </table>
           </div>
-
+        
           <h2>Team Form</h2>
           <p class="lead">
             Below is the form to create, update, or delete a team from your
@@ -142,38 +153,7 @@
             <form class="needs-validation" novalidate>
               <div class="row g-3">
                 
-                <div class="col-12">
-                  <label for="email" class="form-label">Email</label>
-                  <div class="input-group has-validation">
-                    <!-- <span class="input-group-text">@</span> -->
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="email"
-                      placeholder="you@example.com"
-                      required
-                    />
-                    <div class="invalid-feedback">Your email is required.</div>
-                  </div>
-                </div>
-
-                <div class="col-12">
-                  <label for="League Name" class="form-label"
-                    >League Name
-                    <span class="text-body-secondary">(Optional)</span>
-                  </label>
-                  <input
-                    type="League Name"
-                    class="form-control"
-                    id="League Name"
-                    placeholder="Cup in Hand Kickball"
-                  />
-                  <div class="invalid-feedback">
-                    Please enter a valid League Name.
-                  </div>
-                </div>
-
-                <div class="col-12">
+                 <div class="col-12">
                   <label for="league_id" class="form-label">League Id
                   <input
                     type="text"
@@ -190,7 +170,6 @@
                 <div class="col-12">
                   <label for="Team Name" class="form-label"
                     >Team Name
-                    <!-- <span class="text-body-secondary">(Optional)</span> -->
                   </label>
                   <input
                     type="Team Name"
@@ -201,6 +180,9 @@
                   <div class="invalid-feedback">
                     Please enter a valid Team Name.
                   </div>
+                </div>
+                <div class="col-12">
+                  <button class="btn btn-outline-dark" type="submit">Submit</button>
                 </div>
 
             </form>
