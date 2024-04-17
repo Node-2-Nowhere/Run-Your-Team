@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const sequelize = require("sequelize");
 const { Team, Match, TeamMatch } = require("../../models");
-const { withGuard } = require('../utils/authGuard');
+const { withGuard } = require("../../utils/authGuard");
 
 router.get("/", withGuard, async (req, res) => {
   try {
@@ -23,46 +23,44 @@ router.get("/:team_id", withGuard, async (req, res) => {
     const teamData = await Team.findByPk(req.params.team_id, {
       include: [{ model: Match, through: TeamMatch }],
     });
-   
-const teams = teamData.get({ plain: true });
-res.render("teams", {
-  teams,
-  logged_in: req.session.logged_in,
-});
-} catch (err) {
-res.status(500).json(err);
-}
+
+    const teams = teamData.get({ plain: true });
+    res.render("teams", {
+      teams,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
- // let gameWins = 0;
-    // for (const match of teamData.matches) {
-    //   if (match.winner === teamData.id) {
-    //     gameWins++;
-    //   }
-    // }
-    // console.log(teamData);
+// let gameWins = 0;
+// for (const match of teamData.matches) {
+//   if (match.winner === teamData.id) {
+//     gameWins++;
+//   }
+// }
+// console.log(teamData);
 
-    // const fullTeamData = {
-    //   id: teamData.id,
-    //   team_name: teamData.team_name,
-    //   league_id: teamData.league_id,
-    //   match_count: teamData.matches.length,
-    //   gameWins: gameWins,
-    // };
-    // if (teamData) {
-    //   res.status(200).json(fullTeamData);
-    // }
-    // if (!teamData) {
-    //   res.status(404).json({ message: "No Team found with that team id" });
-    //   return;
-    // }
+// const fullTeamData = {
+//   id: teamData.id,
+//   team_name: teamData.team_name,
+//   league_id: teamData.league_id,
+//   match_count: teamData.matches.length,
+//   gameWins: gameWins,
+// };
+// if (teamData) {
+//   res.status(200).json(fullTeamData);
+// }
+// if (!teamData) {
+//   res.status(404).json({ message: "No Team found with that team id" });
+//   return;
+// }
 //   } catch (err) {
 //     console.log(err);
 //     res.status(500).json(err);
 //   }
 // });
-
-
 
 router.post("/", withGuard, async (req, res) => {
   try {
@@ -75,6 +73,5 @@ router.post("/", withGuard, async (req, res) => {
     res.status(400).json(err);
   }
 });
-
 
 module.exports = router;
