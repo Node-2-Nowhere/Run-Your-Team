@@ -1,8 +1,8 @@
 const loginFormHandler = async (event) => {
   event.preventDefault();
 
-  const email = document.querySelector("#emailSign").value.trim();
-  const password = document.querySelector("#passwordSign").value.trim();
+  const email = document.querySelector(".emailSign").value.trim();
+  const password = document.querySelector(".passwordSign").value.trim();
 
   if (email && password) {
     const response = await fetch("/api/user/login", {
@@ -22,28 +22,26 @@ const loginFormHandler = async (event) => {
 const signupFormHandler = async (event) => {
   event.preventDefault();
 
-  const email = document.querySelector("#emailAcct").value.trim();
-  const password = document.querySelector("#passwordAcct").value.trim();
+  const email = document.querySelector(".emailAcct").value.trim();
+  const password = document.querySelector(".passwordAcct").value.trim();
 
   if (email && password) {
     const response = await fetch("/api/user", {
       method: "POST",
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email: email, password: password }),
       headers: { "Content-Type": "application/json" },
     });
 
     if (response.ok) {
-      document.location.replace("/");
+      document.location.replace("/dashboard");
     } else {
       alert("Failed to sign up.");
     }
   }
 };
 
-document
-  .querySelector("#signIn")
-  .addEventListener("#signInID", loginFormHandler);
+document.querySelector("#signIn").addEventListener("submit", loginFormHandler);
 
 document
   .querySelector("#createAccount")
-  .addEventListener("accountID", signupFormHandler);
+  .addEventListener("submit", signupFormHandler);
