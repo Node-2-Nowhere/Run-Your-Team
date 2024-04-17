@@ -1,7 +1,7 @@
 const newLeagueHandler = async (event) => {
   event.preventDefault();
 
-  const leagueName = document.querySelector("").value.trim();
+  const leagueName = document.querySelector("#leagueName").value.trim();
 
   const response = await fetch(`/api/league`, {
     method: "POST",
@@ -159,3 +159,11 @@ document
 // document.querySelector("").addEventListener("", updateTeamHandler);
 // document.querySelector("").addEventListener("", getMatchHandler);
 // document.querySelector("").addEventListener("", getTeamHandler);
+// document.documentElement(".tableElement");
+document.querySelector("").addEventListener("", newTeamHandler);
+document.querySelector("").addEventListener("", newMatchHandler);
+document.querySelector("").addEventListener("", newLeagueHandler);
+document.querySelector("").addEventListener("", updateMatchHandler);
+document.querySelector("").addEventListener("", updateTeamHandler);
+document.querySelector("").addEventListener("", getMatchHandler);
+document.querySelector("").addEventListener("", getTeamHandler);
