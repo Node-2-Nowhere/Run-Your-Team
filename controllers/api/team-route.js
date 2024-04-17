@@ -3,36 +3,42 @@ const sequelize = require("sequelize");
 const { Team, Match, TeamMatch } = require("../../models");
 const { apiGuard } = require("../../utils/authGuard");
 
-// router.get("/", async (req, res) => {
-//   try {
-//     const teamData = await Team.findAll({
-//       include: [{ model: Match, through: TeamMatch }],
-//     });
-//     const teams = teamData.map((team) => team.get({ plain: true }));
-//     res.render("dashboard", {
-//       teams,
-//       logged_in: req.session.logged_in,
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+router.get("/", async (req, res) => {
+  try {
+    const teamData = await Team.findAll({
+      include: [{ model: Match, through: TeamMatch }],
+    });
+    const teams = teamData.map((team) => team.get({ plain: true }));
+    //console.log("-----------------------------------");
+    //render the "dashboard" template passing team names and session information
+    res.render("dashboard", {
+      teams: teams.map((team) => ({
+        id: team.id,
+        league_id: team.league_id,
+        team_name: team.team_name,
+      })),
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
-// router.get("/:team_id", async (req, res) => {
-//   try {
-//     const teamData = await Team.findByPk(req.params.team_id, {
-//       include: [{ model: Match, through: TeamMatch }],
-//     });
+router.get("/:team_id", async (req, res) => {
+  try {
+    const teamData = await Team.findByPk(req.params.team_id, {
+      include: [{ model: Match, through: TeamMatch }],
+    });
 
-//     const teams = teamData.get({ plain: true });
-//     res.render("teams", {
-//       teams,
-//       logged_in: req.session.logged_in,
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+    const teams = teamData.get({ plain: true });
+    res.render("teams", {
+      teams: { team_name: team.team_name },
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 // let gameWins = 0;
 // for (const match of teamData.matches) {
