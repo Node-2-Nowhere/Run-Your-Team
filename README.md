@@ -7,6 +7,7 @@ In this project we were instructed to build a full stack interactive app includi
 # Installation
 
 Here is the deployed link to used the app: https://run-your-team.onrender.com
+Github page: https://github.com/Node-2-Nowhere/Run-Your-Team
 
 # Usage
 
